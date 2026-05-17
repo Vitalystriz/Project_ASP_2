@@ -20,7 +20,7 @@ private:
     std::map <std::string, std::vector<std::string>> map;
 public:
     RecommendCommand(DataManager* dm);
-    void execute(std::map<std::string, std::vector<std::string>> map) override;
+    std::string execute(std::map<std::string, std::vector<std::string>> map) override;
     std::map<std::string, std::vector<std::string>> getArgs();
 };
 

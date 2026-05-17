@@ -14,7 +14,8 @@
                 break;
             }
             try {
-                commands_map[command]->execute(menu->getArgs());
+                std::string message = commands_map[command]->execute(menu->getArgs());
+                menu->printResults(message);
             }
             catch (...) {
                 menu->displayError();

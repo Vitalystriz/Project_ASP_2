@@ -16,7 +16,7 @@ RecommendCommand::RecommendCommand(DataManager* dm) {
 }
 
 
-void RecommendCommand::execute(std::map<std::string, std::vector<std::string>> map) {
+std::string RecommendCommand::execute(std::map<std::string, std::vector<std::string>> map) {
     this->map = std::move(map);
     auto it = this->map.begin();
     std::string userId = it->first;
@@ -34,13 +34,18 @@ void RecommendCommand::execute(std::map<std::string, std::vector<std::string>> m
     std::vector<std::string> finalRecommendations = recommendationList.calculate();
 
     if (finalRecommendations.empty()) {
-        std::cout << "No recommendations found(" << std::endl;
-        return;
+        std::cout << "No recommendations found(" << std::endl;  // print in menu
+        return "No recommendations found(";
     }
 
+    // MIKA TAKE A LOOK.
+    // Now we're printing it right here, however it's not completely right way
+    // In a good way here and as you should write in GET is a returning the only one string (not vector of strings)
+    // Which is already contains all recommendations
     for( const std::string& recommendation : finalRecommendations) {
         std::cout << recommendation << std::endl;
     }
+    return "";
 }
 
 std::map<std::string, std::vector<std::string>>  RecommendCommand::getArgs() {

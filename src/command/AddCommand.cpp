@@ -15,7 +15,7 @@ AddCommand::AddCommand(DataManager *dm) {
     this->dataManager = dm;
 }
 
-void AddCommand::execute(std::map<std::string, std::vector<std::string>> map) {
+std::string AddCommand::execute(std::map<std::string, std::vector<std::string>> map) {
     this->map = std::move(map);
 
     auto it = this->map.begin();
@@ -35,7 +35,8 @@ void AddCommand::execute(std::map<std::string, std::vector<std::string>> map) {
     append_user_storage->execute(dataManager);
     delete append_user_storage;
 
-    std::cout<<"Adding user..."<<std::endl;
+    // std::cout<<"Adding user..."<<std::endl; // print it in app via menu
+    return "Adding user...";
 }
 
 std::map<std::string, std::vector<std::string> > AddCommand::getArgs() {

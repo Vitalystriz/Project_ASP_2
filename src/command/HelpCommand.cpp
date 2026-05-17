@@ -4,9 +4,11 @@
 //
 #include "HelpCommand.h"
 
-    void HelpCommand::execute(std::map<std::string, std::vector<std::string>> map) {
+    std::string HelpCommand::execute(std::map<std::string, std::vector<std::string>> map) {
         execute();
+        return "";
     }
+
     void HelpCommand::execute() {
         std::cout << "--- Recommendation System CLI ---" << std::endl;
         std::cout << "Available commands:" << std::endl;

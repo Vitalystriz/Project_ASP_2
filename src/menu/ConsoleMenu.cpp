@@ -78,3 +78,8 @@ std::string ConsoleMenu::nextCommand() { // -> std::string command
     std::map<std::string, std::vector<std::string> > ConsoleMenu::getArgs() {
         return mapArgs;
     }
+
+    void ConsoleMenu::printResults(std::string message) {
+        std::cout << message << std::endl;
+    }
+
