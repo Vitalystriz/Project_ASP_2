@@ -12,8 +12,7 @@ class ICommand {
 public:
     virtual ~ICommand() = default;
 
-    virtual void execute(std::map<std::string, std::vector<std::string>> map) = 0;
-
+    virtual std::string execute(std::map<std::string, std::vector<std::string>> map) = 0;
 
 };
 #endif //ICOMMAND_H

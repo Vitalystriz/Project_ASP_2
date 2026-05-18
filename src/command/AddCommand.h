@@ -16,7 +16,7 @@ private:
 public:
     explicit AddCommand(DataManager* dm);
     std::map<std::string, std::vector<std::string>> getArgs();
-    void execute(std::map<std::string, std::vector<std::string>> map) override;
+    std::string execute(std::map<std::string, std::vector<std::string>> map) override;
 
 };
 

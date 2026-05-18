@@ -7,7 +7,7 @@
 #include "ICommand.h"
 class HelpCommand: public ICommand {
 public:
-    void execute(std::map<std::string, std::vector<std::string>> map) override;
+    std::string execute(std::map<std::string, std::vector<std::string>> map) override;
     void execute();
 };
 #endif //HELPCOMMAND_H

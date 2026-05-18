@@ -18,7 +18,7 @@ public:
     void printMenu();
     std::string nextCommand() override;
     void displayError() override;
-
+    void printResults(std::string message) override;
     void exitMessage() override;
     std::map<std::string, std::vector<std::string>> getArgs() override;
 

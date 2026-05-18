@@ -9,7 +9,7 @@
 
 class DisplayErrorClass: public ICommand {
 public:
-    void execute(std::map<std::string, std::vector<std::string>> map) override;
+    std::string execute(std::map<std::string, std::vector<std::string>> map) override;
 };
 
 
