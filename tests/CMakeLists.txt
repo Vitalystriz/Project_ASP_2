@@ -30,6 +30,9 @@ add_executable(runTests
         test_calcWeight.cpp
         test_finalList.cpp
 
+        test_SocketMenu/test_nextCommand.cpp
+        test_SocketMenu/test_getArgs.cpp
+
         # --- Source Files (Everything EXCEPT src/run/main.cpp) ---
         ../src/run/Initialization.cpp
         ../src/run/App.cpp
@@ -52,6 +55,8 @@ add_executable(runTests
         ../src/persistence/dataStorage/AppendUserStorage.cpp
         ../src/persistence/dataStorage/AppendUserStorage.cpp
         ../src/run/LoadingData.cpp
+        ../src/menu/SocketMenu.cpp
+
 )
 
 target_include_directories(runTests PRIVATE ../src)

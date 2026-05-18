@@ -43,6 +43,8 @@ add_executable(RecommendationApp
         algorithm/CandidateProducts.cpp
         algorithm/Similarity.cpp
         algorithm/RecommendationList.cpp
+        menu/SocketMenu.cpp
+        menu/SocketMenu.h
 )
 
 
