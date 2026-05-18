@@ -15,7 +15,7 @@
 
 
 
-std::map<std::string, ICommand*> Initialization::createCommandMap(DataManager* dm) {
+std::map<std::string, ICommand*> Initialization::createCommandMapForCLIMode(DataManager* dm) {
     std::map<std::string, ICommand*> commands; // fix magic numbers trouble - done
 
     commands["error"] = new DisplayErrorClass();
@@ -26,6 +26,20 @@ std::map<std::string, ICommand*> Initialization::createCommandMap(DataManager* d
 
     return commands;
 }
+// TODO CHANGE CLASS NAME
+std::map<std::string, ICommand *> Initialization::createCommandMapForServerMode(DataManager *dm) {
+    std::map<std::string, ICommand*> commands;
+
+    commands["ERROR"] = new DisplayErrorClass();
+    commands["HELP"] = new HelpCommand();
+    commands["POST"] = new AddCommand(dm);
+    commands["GET"] = new RecommendCommand(dm);
+    // commands["PATCH"] = new PatchCommand(dm);
+    commands["EXIT"] = nullptr;
+
+    return commands;
+}
+
 
 void Initialization::appLaunch() {
 
@@ -36,7 +50,7 @@ void Initialization::appLaunch() {
     loadingData.load(dataManager);
 
 
-    std::map<std::string, ICommand*> commands = createCommandMap(dataManager);
+    std::map<std::string, ICommand*> commands = createCommandMapForCLIMode(dataManager);
 
     App app(menu, commands);
 

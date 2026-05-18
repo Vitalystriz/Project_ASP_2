@@ -12,7 +12,8 @@
 #include "command/ICommand.h"
 class Initialization {
   public:
-    std::map<std::string, ICommand*> createCommandMap(DataManager* dm);
+    std::map<std::string, ICommand*> createCommandMapForCLIMode(DataManager* dm);
+    std::map<std::string, ICommand*> createCommandMapForServerMode(DataManager* dm);
     void appLaunch();
 };
 

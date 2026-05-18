@@ -20,7 +20,7 @@ class App {
         std::map<std::string, ICommand*> commands_map{};
     public:
         explicit App(IMenu* menu, std::map<std::string, ICommand*> map);
-
+        void runOnce();
         void run();
 };
 
