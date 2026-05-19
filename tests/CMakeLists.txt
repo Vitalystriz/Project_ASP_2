@@ -56,6 +56,8 @@ add_executable(runTests
         ../src/persistence/dataStorage/AppendUserStorage.cpp
         ../src/run/LoadingData.cpp
         ../src/menu/SocketMenu.cpp
+        test_SocketMenu/test_Initialization_for_server_mode.cpp
+
 
 )
 

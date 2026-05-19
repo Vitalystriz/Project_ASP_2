@@ -45,6 +45,7 @@ add_executable(RecommendationApp
         algorithm/RecommendationList.cpp
         menu/SocketMenu.cpp
         menu/SocketMenu.h
+        run/IRequestHandler.h
 )
 
 

@@ -12,7 +12,7 @@
 #include "command/DisplayErrorClass.h"
 #include "command/RecommendCommand.h"
 #include "LoadingData.h"
-
+#include "menu/SocketMenu.h"
 
 
 std::map<std::string, ICommand*> Initialization::createCommandMapForCLIMode(DataManager* dm) {
@@ -40,27 +40,61 @@ std::map<std::string, ICommand *> Initialization::createCommandMapForServerMode(
     return commands;
 }
 
+std::string Initialization::handleRequest(std::string raw_message) {
+    this->menu->feedRawString(raw_message);
+    this->app->runOnce();
+    return this->menu->getFormedResponse();
 
-void Initialization::appLaunch() {
+}
 
-    IMenu* menu = new ConsoleMenu();
-    auto* dataManager = new DataManager();
+void Initialization::appLaunchForServerMode() {
+    this->menu= new SocketMenu();
+    this->data_manager= new DataManager();
 
     LoadingData loadingData;
-    loadingData.load(dataManager);
+    loadingData.load(this->data_manager);
 
 
-    std::map<std::string, ICommand*> commands = createCommandMapForCLIMode(dataManager);
+    this->commands_map = createCommandMapForServerMode(this->data_manager);
+    this->app = new App(menu, commands_map);
 
-    App app(menu, commands);
+    // Initialization only without calling for run
+
+}
 
 
-    app.run();
 
+// void Initialization::appLaunchForCLIMode() {
+//
+//     IMenu* menu = new ConsoleMenu();
+//     auto* dataManager = new DataManager();
+//
+//     LoadingData loadingData;
+//     loadingData.load(dataManager);
+//
+//
+//     std::map<std::string, ICommand*> commands=  createCommandMapForCLIMode(dataManager);
+//
+//     App app(menu, commands);
+//
+//
+//     app.run();
+//
+//
+//     for (auto const& [key, val] : commands) {
+//         delete val;
+//     }
+//     delete menu;
+//     delete dataManager;
+// }
 
-    for (auto const& [key, val] : commands) {
-        delete val;
+Initialization::~Initialization() {
+    for (auto const& [key, val] : this->commands_map) {
+        if (val != nullptr) {
+            delete val;
+        }
     }
-    delete menu;
-    delete dataManager;
+    delete this->app;
+    delete this->menu;
+    delete this->data_manager;
 }

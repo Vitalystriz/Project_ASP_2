@@ -9,12 +9,26 @@
 #include <map>
 
 #include "DataManager.h"
+#include "IRequestHandler.h"
 #include "command/ICommand.h"
-class Initialization {
+#include "menu/IMenu.h"
+#include "App.h"
+#include "menu/SocketMenu.h"
+
+class Initialization : public IRequestHandler {
+private:
+    SocketMenu* menu = nullptr;
+    DataManager* data_manager = nullptr;
+    App* app = nullptr;
+    std::map<std::string, ICommand*> commands_map;
   public:
+    Initialization() = default;
+    ~Initialization();
     std::map<std::string, ICommand*> createCommandMapForCLIMode(DataManager* dm);
     std::map<std::string, ICommand*> createCommandMapForServerMode(DataManager* dm);
-    void appLaunch();
+    // void appLaunchForCLIMode();
+    void appLaunchForServerMode();
+    std::string handleRequest(std::string raw_message) override;
 };
 
 
