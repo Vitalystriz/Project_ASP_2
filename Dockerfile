@@ -12,7 +12,7 @@ WORKDIR /app
 COPY --from=builder /app/build/src/RecommendationApp .
 COPY --from=builder /app/data ./data
 
-CMD ["./RecommendationApp"]
+CMD ["./RecommendationApp", "8080"]
 
 # Stage 3: Test Run
 FROM builder AS test_runner

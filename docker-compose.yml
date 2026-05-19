@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  # C++ TCP-servr
+  server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: runtime # get a 
+    container_name: recommendation_server
+    ports:
+      - "8080:8080" # Пробрасываем порт наружу на случай, если захотите потестить локально
+    volumes:
+      - ./data:/app/data # equals to -v "${PWD}/data:/app/data" recommendation-app
+    command: ["./RecommendationApp", "8080"] # passing the port as an arg to main
+
+  # Python
+  client:
+    build:
+      context: .
+      dockerfile: client.Dockerfile
+    container_name: python_client
+    depends_on:
+      - server # First of all server and then client
+    stdin_open: true # -i
+    tty: true        # -t
+    command: ["python", "client.py", "server", "8080"]
