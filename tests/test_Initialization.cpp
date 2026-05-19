@@ -9,7 +9,7 @@
 TEST(InitializationTest, CreateCommandMapPopulatesCorrectly) {
     Initialization init;
     auto* data_manager = new DataManager();
-    auto commandMap = init.createCommandMap(data_manager);
+    auto commandMap = init.createCommandMapForCLIMode(data_manager);
 
 
     EXPECT_EQ(commandMap.size(), 5);
