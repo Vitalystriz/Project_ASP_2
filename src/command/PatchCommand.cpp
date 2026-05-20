@@ -18,7 +18,7 @@ std::string PatchCommand::execute(std::map<std::string, std::vector<std::string>
     std::string userId = it->first;
     std::vector<std::string> data = it->second;
 
-    if (this->dataManager->getMapUserToProducts().count(it->first) == 0) {
+    if (this->dataManager->getMapUserToProducts().count(it->first) == 0 || data.size()==0) {
         return "404 Not Found";
     }
 

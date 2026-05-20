@@ -17,13 +17,15 @@ std::map<std::string, std::vector<std::string> > DeleteCommand::getArgs() {
 
 std::string DeleteCommand::execute(std::map<std::string, std::vector<std::string> > map) {
     this->map = std::move(map);
-
+    if (map.empty()) {
+        return "404 Not Found";
+    }
     auto it = this->map.begin();
     std::string userId = it->first;
     std::vector<std::string> data = it->second;
 
 
-    if (this->dataManager->getMapUserToProducts().count(userId) == 0) {
+    if (this->dataManager->getMapUserToProducts()[userId].empty() || data.empty()) {
         return "404 Not Found";
     }
 

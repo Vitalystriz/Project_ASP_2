@@ -1,6 +1,3 @@
-//
-// Created by geras on 18.05.2026.
-//
 
 #include "SocketMenu.h"
 
@@ -24,7 +21,7 @@ void SocketMenu::feedRawString(std::string raw_request) {
     this->current_command_str = std::move(raw_request);
 }
 
-//CHANGE COMMANDS TO PATCH, DELETE
+
 std::string SocketMenu::nextCommand() {
     std::string line = this->current_command_str;
 

@@ -2,14 +2,14 @@
 This is a repoitory for the project in course Advanced System Programming  
 
 ## Build and run tests instruction
-1) Write in terminal `docker build --target test_runner -t my-project-tests . 
+1) Write in terminal `docker build --target test_runner -t recommendation-tests .
 ` for bulding 
-2) Write it terminal `docker run --rm my-project-tests  ` for running tests
+2) Write it terminal `docker run --rm rec-tests  ` for running tests
 
 ## Build and run app instruction
-1) Write in terminal `docker build --target runtime -t recommendation-app .
+1) Write in terminal `docker compose build  
 ` for buiilding
-2) Write in terminal `docker run -it -v "${PWD}/data:/app/data" recommendation-app
+2) Write in terminal `docker compose run client
 ` for running app
 
 

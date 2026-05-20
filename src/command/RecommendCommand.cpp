@@ -19,8 +19,12 @@ RecommendCommand::RecommendCommand(DataManager* dm) {
 std::string RecommendCommand::execute(std::map<std::string, std::vector<std::string>> map) {
     this->map = std::move(map);
     auto it = this->map.begin();
+    if (it->second.size() != 1 || this->dataManager->getMapUserToProducts()[it->first].empty()) {
+        return "404 Not Found";
+    }
     std::string userId = it->first;
     std::string productId = it->second[0];
+
 
 
     Similarity similarity;

@@ -22,7 +22,7 @@ std::string AddCommand::execute(std::map<std::string, std::vector<std::string>> 
     std::string userId = it->first;
     std::vector<std::string> data = it->second;
 
-    if (this->dataManager->getMapUserToProducts().count(it->first) == 1) {
+    if (this->dataManager->getMapUserToProducts().count(it->first) == 1 || data.size()==0) {
         return "404 Not Found";
     }
 
