@@ -34,15 +34,10 @@ std::string RecommendCommand::execute(std::map<std::string, std::vector<std::str
     std::vector<std::string> finalRecommendations = recommendationList.calculate();
 
     if (finalRecommendations.empty()) {
-        std::cout << "No recommendations found(" << std::endl;  // print in menu
-        return "No recommendations found(";
+        return "404 Not Found";
     }
 
-    // MIKA TAKE A LOOK.
-    // Now we're printing it right here, however it's not completely right way
-    // In a good way here and as you should write in GET is a returning the only one string (not vector of strings)
-    // Which is already contains all recommendations
-    std::string response = "";
+    std::string response = "200 Ok\n\n";
     for(const std::string& recommendation : finalRecommendations) {
         response += recommendation + " ";
     }

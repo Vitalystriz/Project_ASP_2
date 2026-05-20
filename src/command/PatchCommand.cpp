@@ -1,28 +1,24 @@
-//
-// Created by vitaly on 29.04.2026.
-//
 
-#include "AddCommand.h"
 
-#include <utility>
+#include "PatchCommand.h"
 
 #include "persistence/dataAction/AppendProductAction.h"
 #include "persistence/dataAction/AppendUserAction.h"
 #include "persistence/dataStorage/AppendUserStorage.h"
 
 
-AddCommand::AddCommand(DataManager *dm) {
+PatchCommand::PatchCommand(DataManager *dm) {
     this->dataManager = dm;
 }
 
-std::string AddCommand::execute(std::map<std::string, std::vector<std::string>> map) {
+std::string PatchCommand::execute(std::map<std::string, std::vector<std::string>> map) {
     this->map = std::move(map);
 
     auto it = this->map.begin();
     std::string userId = it->first;
     std::vector<std::string> data = it->second;
 
-    if (this->dataManager->getMapUserToProducts().count(it->first) == 1) {
+    if (this->dataManager->getMapUserToProducts().count(it->first) == 0) {
         return "404 Not Found";
     }
 
@@ -40,9 +36,9 @@ std::string AddCommand::execute(std::map<std::string, std::vector<std::string>> 
     delete append_user_storage;
 
 
-    return "201 Created";
+    return "204 No Content";
 }
 
-std::map<std::string, std::vector<std::string> > AddCommand::getArgs() {
+std::map<std::string, std::vector<std::string> > PatchCommand::getArgs() {
     return this->map;
 }

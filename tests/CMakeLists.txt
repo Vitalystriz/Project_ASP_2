@@ -44,6 +44,8 @@ add_executable(runTests
         ../src/command/DisplayErrorClass.cpp
         ../src/command/HelpCommand.cpp
         ../src/command/AddCommand.cpp
+        ../src/command/PatchCommand.cpp
+        ../src/command/DeleteCommand.cpp
         ../src/command/RecommendCommand.cpp
 
 
@@ -54,14 +56,19 @@ add_executable(runTests
         ../src/DataManager.cpp
         ../src/persistence/dataAction/AppendUserAction.cpp
         ../src/persistence/dataAction/AppendProductAction.cpp
+        ../src/persistence/dataAction/DeleteProductAction.cpp
         ../src/persistence/dataStorage/AppendUserStorage.cpp
         ../src/persistence/dataStorage/AppendUserStorage.cpp
+        ../src/persistence/dataStorage/DeleteProductStorage.cpp
         ../src/run/LoadingData.cpp
         ../src/menu/SocketMenu.cpp
 
         ../src/run/TcpServer.cpp
         test_SocketMenu/test_Initialization_for_server_mode.cpp
         test_TcpServer.cpp
+        test_dataAction/test_deleteProduct.cpp
+        test_patchCommand.cpp
+        test_deleteCommand.cpp
 
 
 )

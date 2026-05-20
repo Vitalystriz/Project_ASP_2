@@ -43,7 +43,7 @@ std::string SocketMenu::nextCommand() {
     if (command == "EXIT") return "EXIT";
     if (command == "HELP") return "HELP";
 
-    if (command == "POST" || command == "PATCH") {
+    if (command == "POST" || command == "PATCH" || command=="DELETE") {
         std::string uId;
         if (ss >> uId) {
             std::vector<std::string> pId;

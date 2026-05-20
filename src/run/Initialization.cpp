@@ -12,6 +12,8 @@
 #include "command/DisplayErrorClass.h"
 #include "command/RecommendCommand.h"
 #include "LoadingData.h"
+#include "command/DeleteCommand.h"
+#include "command/PatchCommand.h"
 #include "menu/SocketMenu.h"
 
 
@@ -34,7 +36,8 @@ std::map<std::string, ICommand *> Initialization::createCommandMapForServerMode(
     commands["HELP"] = new HelpCommand();
     commands["POST"] = new AddCommand(dm);
     commands["GET"] = new RecommendCommand(dm);
-    // commands["PATCH"] = new PatchCommand(dm);
+    commands["PATCH"] = new PatchCommand(dm);
+    commands["DELETE"] = new DeleteCommand(dm);
     commands["EXIT"] = nullptr;
 
     return commands;
