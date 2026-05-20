@@ -12,6 +12,10 @@ This is a repoitory for the project in course Advanced System Programming
 2) Write in terminal `docker compose run client
 ` for running app
 
+## Port modifying 
+In case you decide to change port open `docker-compose.yml` file and change port from `8080` in all dedicated places. They were also marked in comments
+(I have no clue why and in my opinion it doesn't make any common sense)
+
 
 # SOLID & Open-Closed Principle (OCP)
 

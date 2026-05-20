@@ -4,6 +4,7 @@ RUN apt-get update && apt-get install -y cmake libgtest-dev
 
 WORKDIR /app
 COPY . .
+RUN mkdir -p data
 RUN mkdir build && cd build && cmake .. && make
 
 # Stage 2: App Run (Main target)

@@ -2,6 +2,7 @@
 #include <fstream>
 #include <sstream>
 #include <iostream>
+#include <filesystem>
 
 void LoadingData::load(DataManager* dataManager) {
     std::map<std::string, std::set<std::string>> userToProducts = parseFile("data/dataUserToProduct.txt");
@@ -13,6 +14,26 @@ void LoadingData::load(DataManager* dataManager) {
 
 std::map<std::string, std::set<std::string>> LoadingData::parseFile(const std::string& filepath) {
     std::map<std::string, std::set<std::string>> parsedData;
+    std::filesystem::path pathObj(filepath);
+
+
+    // Check if the file exists. If it doesn't, create the directory and the empty file.
+    if (!std::filesystem::exists(pathObj)) {
+        // Create the parent directory (e.g., "data") if it doesn't exist
+        if (pathObj.has_parent_path() && !std::filesystem::exists(pathObj.parent_path())) {
+            std::filesystem::create_directories(pathObj.parent_path());
+        }
+
+        // Create the empty text file
+        std::ofstream newFile(filepath);
+        if (newFile.is_open()) {
+            newFile.close();
+        }
+
+        // Return the empty map since there's no data to read yet
+        return parsedData;
+    }
+
     std::ifstream file(filepath);
 
 

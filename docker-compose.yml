@@ -6,13 +6,13 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-      target: runtime # get a 
+      target: runtime # get a
     container_name: recommendation_server
     ports:
-      - "8080:8080" # Пробрасываем порт наружу на случай, если захотите потестить локально
+      - "8080:8080" # CHANGE IT HERE
     volumes:
       - ./data:/app/data # equals to -v "${PWD}/data:/app/data" recommendation-app
-    command: ["./RecommendationApp", "8080"] # passing the port as an arg to main
+    command: ["./RecommendationApp", "8080"] # CHANGE IT HERE passing the port as an arg to main
 
   # Python
   client:
@@ -24,4 +24,4 @@ services:
       - server # First of all server and then client
     stdin_open: true # -i
     tty: true        # -t
-    command: ["python", "client.py", "server", "8080"]
+    command: ["python", "client.py", "server", "8080"] # CHNAGE IT HERE
