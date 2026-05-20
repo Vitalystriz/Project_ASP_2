@@ -14,7 +14,9 @@ add_executable(RecommendationApp
         command/DisplayErrorClass.h
         command/HelpCommand.h
         command/AddCommand.h
+        command/PatchCommand.cpp
         command/RecommendCommand.h
+        command/DeleteCommand.h
 
         run/main.cpp
         run/Initialization.cpp
@@ -33,6 +35,7 @@ add_executable(RecommendationApp
 
 
         persistence/dataAction/IDataAction.h
+        persistence/dataAction/DeleteProductAction.h
         persistence/dataAction/AppendUserAction.h
         persistence/dataAction/AppendUserAction.cpp
         persistence/dataAction/AppendProductAction.cpp
@@ -40,6 +43,7 @@ add_executable(RecommendationApp
         persistence/dataStorage/IDataStorage.h
         persistence/dataStorage/AppendUserStorage.cpp
         persistence/dataStorage/AppendUserStorage.h
+        persistence/dataStorage/DeleteProductStorage.h
         run/LoadingData.cpp
         run/LoadingData.h
         algorithm/CandidateProducts.cpp
@@ -48,6 +52,13 @@ add_executable(RecommendationApp
         menu/SocketMenu.cpp
         menu/SocketMenu.h
         run/TcpServer.cpp
+        command/PatchCommand.cpp
+        persistence/dataAction/DeleteProductAction.cpp
+
+        command/DeleteCommand.cpp
+        persistence/dataStorage/DeleteProductStorage.cpp
+
+
 )
 
 
