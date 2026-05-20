@@ -12,6 +12,8 @@
 
 #include "TcpServer.h"
 
+#include "command/HelpCommand.h"
+
 
 using namespace std;
 
@@ -24,7 +26,7 @@ void TcpServer::start() {
 
 
 
-     sock = socket(AF_INET, SOCK_STREAM, 0);
+    sock = socket(AF_INET, SOCK_STREAM, 0);
     if (sock < 0) {
         perror("error creating socket");
         return;
@@ -44,6 +46,23 @@ void TcpServer::start() {
     if (listen(sock, 5) < 0) {
         perror("error listening to a socket");
 
+    }
+
+
+    while (true) {
+        cout << "Waiting for a new client connection..." << endl;
+
+        if (acceptClient()) {
+
+            // HelpCommand help_command;
+            // std::map<std::string, std::vector<std::string>> map;
+            // sendMessage(help_command.execute(map));
+
+            handleClientCommunication();
+
+        } else {
+            usleep(100000);
+        }
     }
 
 }

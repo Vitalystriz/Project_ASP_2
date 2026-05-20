@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
-#include "TcpServer.h"
-#include "IRequestHandler.h"
+#include "run/TcpServer.h"
+#include "run/IRequestHandler.h"
 
 class MockRequestHandler : public IRequestHandler {
 public:

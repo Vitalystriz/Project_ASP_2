@@ -19,6 +19,8 @@ add_executable(RecommendationApp
         run/main.cpp
         run/Initialization.cpp
         run/App.cpp
+        run/IRequestHandler.h
+        run/TcpServer.h
 
         menu/ConsoleMenu.cpp
 
@@ -45,7 +47,7 @@ add_executable(RecommendationApp
         algorithm/RecommendationList.cpp
         menu/SocketMenu.cpp
         menu/SocketMenu.h
-        run/IRequestHandler.h
+        run/TcpServer.cpp
 )
 
 

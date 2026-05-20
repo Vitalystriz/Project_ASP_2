@@ -42,10 +42,12 @@ std::string RecommendCommand::execute(std::map<std::string, std::vector<std::str
     // Now we're printing it right here, however it's not completely right way
     // In a good way here and as you should write in GET is a returning the only one string (not vector of strings)
     // Which is already contains all recommendations
-    for( const std::string& recommendation : finalRecommendations) {
-        std::cout << recommendation << std::endl;
+    std::string response = "";
+    for(const std::string& recommendation : finalRecommendations) {
+        response += recommendation + " ";
     }
-    return "";
+
+    return response;
 }
 
 std::map<std::string, std::vector<std::string>>  RecommendCommand::getArgs() {
