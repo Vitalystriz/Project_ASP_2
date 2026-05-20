@@ -19,11 +19,12 @@ def main():
         
             msg = input()
             msg += "\n"
-            s.send(bytes(msg, 'utf-8'))
+            s.send(msg.encode('utf-8', errors='replace'))
             data = s.recv(4096)
             if not data:
                 break
             print(data.decode('utf-8'), end='')
+
 
         except EOFError:
             break

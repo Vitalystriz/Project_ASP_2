@@ -6,10 +6,26 @@
 
     std::string HelpCommand::execute(std::map<std::string, std::vector<std::string>> map) {
         execute();
-        return "";
+        std::string response;
+        response.append("--- Recommendation System CLI ---");
+        response.append("\n");
+        response.append("Available commands:");
+        response.append("\n");
+        response.append("- HELP");
+        response.append("\n");
+        response.append("- POST <userId> <productId1> <productId2> ...");
+        response.append("\n");
+        response.append("- PATCH <userId> <productId1> <productId2> ...");
+        response.append("\n");
+        response.append("- GET <userId> <productId>");
+        response.append("\n");
+        response.append("- DELETE <userId> <productId1> <productId2> ...");
+        response.append("\n");
+        response.append("---------------------------------");
+        return response;
     }
-
     void HelpCommand::execute() {
+
         std::cout << "--- Recommendation System CLI ---" << std::endl;
         std::cout << "Available commands:" << std::endl;
         std::cout << "- help" << std::endl;

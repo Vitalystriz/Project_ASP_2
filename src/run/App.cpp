@@ -30,6 +30,7 @@
         std::string command = menu->nextCommand();
         if (command == "EXIT") {
             menu->exitMessage();
+            return;
         }
         try {
             std::string message = commands_map[command]->execute(menu->getArgs());

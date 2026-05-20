@@ -84,6 +84,7 @@ void SocketMenu::printResults(std::string message) {
 }
 
 std::string SocketMenu::getFormedResponse() {
+    this->output_response.append("\n");
     return this->output_response;
 }
 

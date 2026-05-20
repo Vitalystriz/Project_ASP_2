@@ -4,6 +4,7 @@
 // src/main.cpp
 
 #include "Initialization.h"
+#include "run/TcpServer.h"
 
 int main(int argc, char* argv[]) {
     if (argc < 2) {
@@ -16,10 +17,11 @@ int main(int argc, char* argv[]) {
 
     // Launch the application
     initializer.appLaunchForServerMode();
-    // TODO integrate server
+
     // Initialize server
-    // TCPServer server = TCPServer(port, &initializer);
-    // server.start();
+    TcpServer server = TcpServer(port, initializer);
+    server.start();
+
     // The program will run until appLaunch() finishes.
     return 0;
 }
