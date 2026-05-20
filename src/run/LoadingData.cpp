@@ -19,7 +19,7 @@ std::map<std::string, std::set<std::string>> LoadingData::parseFile(const std::s
 
     // Check if the file exists. If it doesn't, create the directory and the empty file.
     if (!std::filesystem::exists(pathObj)) {
-        // Create the parent directory (e.g., "data") if it doesn't exist
+        // Create the parent directory if it doesn't exist
         if (pathObj.has_parent_path() && !std::filesystem::exists(pathObj.parent_path())) {
             std::filesystem::create_directories(pathObj.parent_path());
         }

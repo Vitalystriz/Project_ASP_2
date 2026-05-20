@@ -1,6 +1,4 @@
-//
-// Created by geras on 20.05.2026.
-//
+
 
 #include "DeleteCommand.h"
 
@@ -16,10 +14,10 @@ std::map<std::string, std::vector<std::string> > DeleteCommand::getArgs() {
 }
 
 std::string DeleteCommand::execute(std::map<std::string, std::vector<std::string> > map) {
-    this->map = std::move(map);
     if (map.empty()) {
         return "404 Not Found";
     }
+    this->map = std::move(map);
     auto it = this->map.begin();
     std::string userId = it->first;
     std::vector<std::string> data = it->second;
